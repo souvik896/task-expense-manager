@@ -1,0 +1,52 @@
+<div class="p-6 space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold" [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">Expences</h1>
+        <app-button (click)="showModel.set(true)">+ Add Expence</app-button>
+    </div>
+    <!-- grid card -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        @for (item of expenses(); track $index) {
+        <app-card>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-300 font-semibold">{{item.title}}</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-300">Date: {{ item.date }}</p>
+                </div>
+                <app-button variant="secondary" (click)="removeExpence($index)">Remove</app-button>
+            </div>
+        </app-card>
+        }
+
+
+    </div>
+    <app-modal [open]="showModel()" (close)="showModel.set(false)">
+        <div class="flex flex-col gap-4 p-[6px] bg-gray-50 dark:bg-gray-800 rounded-lg ">
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Title</label>
+                <app-input placeholder="Enter  title" [value]="siganlTitle()"
+                    (valueChange)="siganlTitle.set($event)"></app-input>
+            </div>
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Amount</label>
+                <app-input placeholder="Enter  amount" [value]="signalAmount()"  (valueChange)="signalAmount.set($event)"></app-input>
+            </div>
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Category</label>
+                <app-input placeholder="Enter  category" [value]="signalCategory()"  (valueChange)="signalCategory.set($event)" ></app-input>
+            </div>
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Date</label>
+                <app-input type="date"  [value]="signalDate()"  (valueChange)="signalDate.set($event)" ></app-input>
+            </div>
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Notes</label>
+                <app-input placeholder="Enter  notes" [value]="signalnote()"  (valueChange)="signalnote.set($event)"></app-input>
+            </div>
+            <div class="flex justify-start gap-2 mt-2">
+                <app-button (click)="addTask()">
+                    Add Expence
+                </app-button>
+            </div>
+        </div>
+    </app-modal>
+</div>

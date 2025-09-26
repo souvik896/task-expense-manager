@@ -1,0 +1,47 @@
+<div class="p-6 space-y-6">
+  <h1 class="text-3xl font-bold mb-4"
+      [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">
+    Dashboard
+  </h1>
+
+  <!-- Summary Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="bg-white p-4 rounded-xl shadow-md cursor-pointer hover:shadow-xl transition"
+         (click)="goToTasks()">
+      <p class="text-gray-500">Total Tasks</p>
+      <h2 class="text-2xl font-bold text-amber-950">{{ sharedservice._totaltask() }}</h2>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-md">
+      <p class="text-gray-500">Completed Tasks</p>
+      <h2 class="text-2xl font-bold text-green-500">{{ sharedservice._completedTask().length }}</h2>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-md">
+      <p class="text-gray-500">Pending Tasks</p>
+      <h2 class="text-2xl font-bold text-red-500">{{ sharedservice._pendingtask().length }}</h2>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-md cursor-pointer hover:shadow-xl transition"
+         (click)="goToExpenses()">
+      <p class="text-gray-500">Total Expenses</p>
+      <h2 class="text-2xl font-bold text-blue-500">₹{{ sharedservice._totalExpenses() }}</h2>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+  <!-- Tasks Chart -->
+  <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
+    <h3 class="text-gray-700 font-semibold mb-1 text-sm">Tasks Overview</h3>
+    <canvas id="tasksChart" #tasksCanvas class="max-h-40 w-full"></canvas>
+  </div>
+
+  <!-- Expenses Chart -->
+  <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
+    <h3 class="text-gray-700 font-semibold mb-1 text-sm">Expenses Overview</h3>
+    <canvas id="expensesChart" #expensesCanvas class="max-h-40 w-full"></canvas>
+  </div>
+</div>
+
+</div>

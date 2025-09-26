@@ -1,0 +1,58 @@
+<div class="p-6 space-y-6">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold"  [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">Tasks</h1>
+        <app-button (click)="showModal.set(true)">+ Add Task</app-button>
+    </div>
+
+    <!-- Task Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <app-card *ngFor="let task of tasks()">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 [ngClass]="task.completed ? 'line-through text-gray-400' : 'text-gray-800 dark:text-white'"
+                        class="font-semibold">
+                        {{ task.title }}
+                    </h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-300">Due: {{ task.dueDate }}</p>
+                </div>
+                <app-button variant="secondary" (click)="toggleComplete(task.id)">
+                    {{ task.completed ? 'Undo' : 'Done' }}
+                </app-button>
+            </div>
+        </app-card>
+    </div>
+
+    <!-- Add Task Modal -->
+    <app-modal [open]="showModal()" title="Add Task" (close)="showModal.set(false)">
+        <div class="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+
+            <!-- Task Title Input -->
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Task Title</label>
+                <app-input placeholder="Enter task title" [value]="newTaskTitle()"
+                    (valueChange)="newTaskTitle.set($event)"
+                   ></app-input>
+            </div>
+
+            <!-- Due Date Input -->
+            <div class="flex flex-col">
+                <label class="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Due Date</label>
+                <app-input type="date" [value]="newTaskDue()" (valueChange)="newTaskDue.set($event)"
+                   ></app-input>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-start gap-2 mt-2">
+                <app-button (click)="addTask()">
+                    Add Task
+                </app-button>
+            </div>
+
+        </div>
+    </app-modal>
+
+
+
+</div>

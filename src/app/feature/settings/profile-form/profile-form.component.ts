@@ -1,0 +1,32 @@
+import { Component, signal } from '@angular/core';
+import { CardComponent } from "../../../shared/ui/card/card.component";
+import { ButtonComponent } from "../../../shared/ui/button/button.component";
+
+@Component({
+  selector: 'app-profile-form',
+  standalone: true,
+  imports: [CardComponent, ButtonComponent],
+  templateUrl: './profile-form.component.html',
+  styleUrls: ['./profile-form.component.css']
+})
+export class ProfileFormComponent {
+  darkMode = signal(false);
+
+  toggleDarkMode() {
+    this.darkMode.set(!this.darkMode());
+  }
+
+  exportData() {
+    console.log("Exporting...");
+  }
+
+  importData() {
+    console.log("Importing...");
+  }
+
+  clearData() {
+    if (confirm("Are you sure you want to clear all data?")) {
+      console.log("Data cleared");
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div [class.dark]="darkMode()" class="p-6 space-y-8 max-w-4xl mx-auto">
+
+  <!-- Page Header -->
+  <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Settings</h1>
+
+  <!-- Profile Section -->
+  <app-card class="p-6 hover:shadow-lg transition-shadow rounded-xl">
+    <div class="flex items-center gap-6">
+      <img src="https://via.placeholder.com/80" class="w-20 h-20 rounded-full border-2 border-amber-400" alt="Profile">
+      <div class="flex-1">
+        <h2 class="font-semibold text-gray-800 dark:text-gray-100 text-lg">John Doe</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-300 mb-3">john.doeexample.com</p>
+        <app-button variant="secondary">Edit Profile</app-button>
+      </div>
+    </div>
+  </app-card>
+
+  
+
+  <!-- Data Controls -->
+  <app-card class="p-6 rounded-xl">
+    <h2 class="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-200">Data</h2>
+    <div class=" flex flex-col items-center  gap-4 md:flex-row md:gap-4 md:justify-start">
+      <app-button variant="secondary" (click)="exportData()">Export Data</app-button>
+      <app-button variant="secondary" (click)="importData()">Import Data</app-button>
+      <app-button variant="danger" (click)="clearData()">Clear Data</app-button>
+    </div>
+  </app-card>
+
+</div>
