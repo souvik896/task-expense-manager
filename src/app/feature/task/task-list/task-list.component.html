@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="flex justify-between items-center">
         <h1 class="text-2xl font-bold"  [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">Tasks</h1>
-        <app-button (click)="showModal.set(true)">+ Add Task</app-button>
+        <app-button [variant]="'dark'" (click)="showModal.set(true)">+ Add </app-button>
     </div>
 
     <!-- Task Cards -->
@@ -45,7 +45,7 @@
 
             <!-- Buttons -->
             <div class="flex justify-start gap-2 mt-2">
-                <app-button (click)="addTask()">
+                <app-button  [variant]="'secondary'"  (click)="addTask()">
                     Add Task
                 </app-button>
             </div>

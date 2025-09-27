@@ -1,68 +1,60 @@
-<div [class.dark]="darkMode.isDarkMode()" class="min-h-screen flex transition-colors duration-300">
+<!-- Startup Spinner Overlay -->
+<!-- Startup Spinner Overlay -->
+@if (loading()) {
+  <div class="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 z-50">
+    <!-- Fancy loader -->
+    <div class="relative flex items-center justify-center">
+      <!-- Outer glowing ring -->
+      <div class="absolute h-24 w-24 rounded-full border-4 border-amber-400 opacity-30 animate-ping"></div>
+      <!-- Middle rotating ring -->
+      <div class="h-16 w-16 border-4 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+      <!-- Inner glowing dot -->
+      <div class="absolute h-6 w-6 bg-amber-400 rounded-full shadow-lg animate-pulse"></div>
+    </div>
+    <!-- Text -->
+    <p class="mt-6 text-amber-400 font-semibold text-lg tracking-wide animate-pulse">
+      Loading Task Manager...
+    </p>
+  </div>
+}
 
+
+<div [class.dark]="darkMode.isDarkMode()" class="min-h-screen flex transition-colors duration-300">
   <!-- Sidebar -->
   <nav [ngClass]="sidebarOpen() ? 'w-60' : 'w-16'"
     class="bg-gray-900 text-gray-100 p-4 space-y-4 transition-all duration-400 overflow-hidden flex flex-col">
 
     <!-- Header with toggle -->
     <div class="flex items-center justify-between">
-      <!-- Show title only when open -->
       @if(sidebarOpen()){
-      <h1 class="text-xl font-bold text-amber-400">Task Manager</h1>
+        <h1 class="text-xl font-bold text-amber-400">Task Manager</h1>
       }
-      <!-- Always show toggle button -->
-      <button (click)="toggleSidebar()" class=" hidden md:inline-flex text-amber-400 cursor-pointer ">
+      <button (click)="toggleSidebar()" class="hidden md:inline-flex text-amber-400 cursor-pointer">
         @if(sidebarOpen()){
-        <span>⮜</span>
+          <span>⮜</span>
         }
         @else {
-        <span>⮞</span>
+          <span>⮞</span>
         }
-
       </button>
     </div>
 
     <!-- Links -->
     <div class="mt-4 space-y-3">
       <a routerLink="/dashboard" routerLinkActive="text-amber-400" class="block cursor-pointer">
-        @if(sidebarOpen()){
-        <span>Dashboard</span>
-        }@else{
-        <span>📊</span>
-        }
-
-
+        @if(sidebarOpen()){ <span>Dashboard</span> } @else { <span>📊</span> }
       </a>
       <a routerLink="/tasks" routerLinkActive="text-amber-400" class="block cursor-pointer">
-
-
-        @if(sidebarOpen()){
-        <span>Tasks</span>
-        }@else{
-        <span>📝</span>
-        }
+        @if(sidebarOpen()){ <span>Tasks</span> } @else { <span>📝</span> }
       </a>
       <a routerLink="/expenses" routerLinkActive="text-amber-400" class="block cursor-pointer">
-
-
-        @if(sidebarOpen()){
-        <span>Expenses</span>
-        }@else{
-        <span>💰</span>
-        }
+        @if(sidebarOpen()){ <span>Expenses</span> } @else { <span>💰</span> }
       </a>
       <a routerLink="/settings" routerLinkActive="text-amber-400" class="block cursor-pointer">
-
-
-        @if(sidebarOpen()){
-        <span>Settings</span>
-        }@else{
-        <span>⚙️</span>
-        }
+        @if(sidebarOpen()){ <span>Settings</span> } @else { <span>⚙️</span> }
       </a>
     </div>
   </nav>
-
 
   <!-- Main Content -->
   <main [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'"
@@ -73,10 +65,8 @@
       <span class="mr-3 font-medium">{{ darkMode.isDarkMode() ? 'Dark Mode' : 'Light Mode' }}</span>
       <label class="relative inline-flex items-center cursor-pointer">
         <input type="checkbox" class="sr-only peer" [checked]="darkMode.isDarkMode()" (change)="toggleDarkMode()">
-        <!-- Track -->
         <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer 
                     dark:bg-gray-700 peer-checked:bg-amber-400 transition-colors duration-300"></div>
-        <!-- Knob -->
         <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md 
                     peer-checked:translate-x-5 transition-transform duration-300"></div>
       </label>

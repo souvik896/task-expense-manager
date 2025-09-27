@@ -1,12 +1,12 @@
-<div [class.dark]="darkMode()" class="p-6 space-y-8 max-w-4xl mx-auto">
+<div class="p-6 space-y-8 max-w-4xl mx-auto">
 
   <!-- Page Header -->
-  <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Settings</h1>
+  <h1 class="text-3xl font-bold "  [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">Settings</h1>
 
   <!-- Profile Section -->
   <app-card class="p-6 hover:shadow-lg transition-shadow rounded-xl">
     <div class="flex items-center gap-6">
-      <img src="https://via.placeholder.com/80" class="w-20 h-20 rounded-full border-2 border-amber-400" alt="Profile">
+      <img src="https://via.placeholder.com/80" class="w-20 h-20 hidden border-2 border-amber-400 md:rounded-full " alt="Profile">
       <div class="flex-1">
         <h2 class="font-semibold text-gray-800 dark:text-gray-100 text-lg">John Doe</h2>
         <p class="text-sm text-gray-500 dark:text-gray-300 mb-3">john.doeexample.com</p>

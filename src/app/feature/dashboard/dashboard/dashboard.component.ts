@@ -24,6 +24,8 @@ export class DashboardComponent implements AfterViewInit {
   cmtask: number = 0;
   pndtask: number = 0;
 
+ 
+
   constructor(
     private router: Router,
     public darkMode: DarkModeService,
@@ -33,7 +35,7 @@ export class DashboardComponent implements AfterViewInit {
       this.darkMode.isDarkMode();
       this.sharedservice._totaltask();
 
-      // ✅ Update task counts
+      // Update task counts
       this.cmtask = this.sharedservice._completedTask().length;
       this.pndtask = this.sharedservice._pendingtask().length;
 
@@ -42,7 +44,6 @@ export class DashboardComponent implements AfterViewInit {
         this.tasksChart.update();
       }
 
-      // ✅ Update expenses
       if (this.expensesChart) {
         const total = this.sharedservice.totalExpences();
         this.expensesChart.data.datasets[0].data = [total];
@@ -78,10 +79,7 @@ export class DashboardComponent implements AfterViewInit {
         options: {
           responsive: true,
           plugins: {
-            legend: {
-              position: 'bottom',
-              labels: { color: '#333', font: { weight: 'bold' } }
-            },
+            legend: { position: 'bottom', labels: { color: '#333', font: { weight: 'bold' } } },
             tooltip: {
               backgroundColor: isDark ? '#222' : '#fff',
               titleColor: isDark ? '#fff' : '#000',
@@ -120,5 +118,7 @@ export class DashboardComponent implements AfterViewInit {
         }
       }
     });
+
+
   }
 }

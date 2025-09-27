@@ -1,7 +1,7 @@
 <div class="p-6 space-y-6">
     <div class="flex justify-between items-center">
         <h1 class="text-2xl font-bold" [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">Expences</h1>
-        <app-button (click)="showModel.set(true)">+ Add Expence</app-button>
+        <app-button [variant]="'dark'" (click)="showModel.set(true)">+ Add </app-button>
     </div>
     <!-- grid card -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
@@ -43,7 +43,7 @@
                 <app-input placeholder="Enter  notes" [value]="signalnote()"  (valueChange)="signalnote.set($event)"></app-input>
             </div>
             <div class="flex justify-start gap-2 mt-2">
-                <app-button (click)="addTask()">
+                <app-button [variant]="'secondary'" (click)="addTask()">
                     Add Expence
                 </app-button>
             </div>

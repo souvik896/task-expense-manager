@@ -1,4 +1,13 @@
-<div class="p-6 space-y-6">
+<!-- Loading Spinner -->
+
+<!-- <div class="flex justify-center items-center min-h-[400px]">
+  <div class="w-16 h-16 border-4 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+</div> -->
+ 
+
+<!-- Dashboard Content -->
+
+<div  class="p-6 space-y-6">
   <h1 class="text-3xl font-bold mb-4"
       [ngClass]="darkMode.isDarkMode() ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'">
     Dashboard
@@ -30,18 +39,18 @@
   </div>
 
   <!-- Charts Section -->
- <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-  <!-- Tasks Chart -->
-  <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
-    <h3 class="text-gray-700 font-semibold mb-1 text-sm">Tasks Overview</h3>
-    <canvas id="tasksChart" #tasksCanvas class="max-h-40 w-full"></canvas>
-  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+    <!-- Tasks Chart -->
+    <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
+      <h3 class="text-gray-700 font-semibold mb-1 text-sm">Tasks Overview</h3>
+      <canvas id="tasksChart" #tasksCanvas class="max-h-40 w-full"></canvas>
+    </div>
 
-  <!-- Expenses Chart -->
-  <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
-    <h3 class="text-gray-700 font-semibold mb-1 text-sm">Expenses Overview</h3>
-    <canvas id="expensesChart" #expensesCanvas class="max-h-40 w-full"></canvas>
+    <!-- Expenses Chart -->
+    <div class="bg-white p-2 rounded-lg shadow-md max-h-56">
+      <h3 class="text-gray-700 font-semibold mb-1 text-sm">Expenses Overview</h3>
+      <canvas id="expensesChart" #expensesCanvas class="max-h-40 w-full"></canvas>
+    </div>
   </div>
 </div>
 
-</div>
